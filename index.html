@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Dev Mor Çiçekler</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: black;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+/* Yazı ve buton */
+#panel {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 10;
+}
+
+textarea {
+    width: 360px;
+    height: 120px;
+    padding: 10px;
+    font-size: 18px;
+    color: white;
+    background: #111;
+    border: 2px solid purple;
+    border-radius: 8px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 12px 26px;
+    font-size: 18px;
+    background: purple;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Çiçek */
+.flower {
+    position: absolute;
+    bottom: -300px;
+    animation: rise 4s ease-out forwards, sway 2s ease-in-out infinite alternate;
+    text-align: center;
+}
+
+/* DEV MOR ÇİÇEK */
+.bloom {
+    font-size: 120px;
+    color: purple;
+}
+
+/* YEŞİL YAPRAKLAR */
+.leaves {
+    font-size: 50px;
+    color: green;
+}
+
+/* UZUN YEŞİL SAP */
+.stem {
+    width: 12px;
+    height: 260px;
+    background: green;
+    margin: 0 auto;
+    border-radius: 6px;
+}
+
+/* Yukarı çık ve dur */
+@keyframes rise {
+    to {
+        transform: translateY(-70vh);
+    }
+}
+
+/* Sağ-sol sallanma animasyonu */
+@keyframes sway {
+    0% { transform: translateY(-70vh) translateX(0); }
+    50% { transform: translateY(-70vh) translateX(20px); }
+    100% { transform: translateY(-70vh) translateX(-20px); }
+}
+</style>
+</head>
+
+<body>
+
+<div id="panel">
+    <textarea id="textInput" placeholder="Prensesim çiçekler solunca sen üzülüyordun bende sana  böyle bir hediye vermek istedim seni coook seviyorummmm"></textarea><br>
+    <button onclick="startFlowers()">ÇİÇEKLERİ BAŞLAT</button>
+</div>
+
+<script>
+function startFlowers() {
+    // Arkadaki yazıyı ve butonu kaldır
+    document.getElementById('panel').style.display = 'none';
+
+    // 3 tane çiçek oluştur
+    for (let i = 0; i < 3; i++) {
+        const flower = document.createElement("div");
+        flower.className = "flower";
+
+        // Ekranı kaplayacak şekilde sola, ortasına, sağa
+        flower.style.left = (i * 33 + 5) + "vw";
+
+        flower.innerHTML = `
+            <div class="bloom">🌸</div>
+            <div class="leaves">🍃 🍃</div>
+            <div class="stem"></div>
+        `;
+
+        document.body.appendChild(flower);
+    }
+}
+</script>
+
+</body>
+</html>
